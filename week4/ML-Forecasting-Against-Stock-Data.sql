@@ -1,5 +1,6 @@
 -- This is your Cortex Project.
 -- https://quickstarts.snowflake.com/guide/getting-started-with-snowflake-cortex-ml-forecasting-and-classification/index.html
+-- dev.raw_data.market_data is already populated by a data pipeline
 -----------------------------------------------------------
 -- SETUP
 -----------------------------------------------------------
