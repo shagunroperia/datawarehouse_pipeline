@@ -4,7 +4,6 @@ CREATE SCHEMA IF NOT EXISTS dev.adhoc;
 CREATE SCHEMA IF NOT EXISTS dev.raw_data;
 CREATE SCHEMA IF NOT EXISTS dev.analytics;
 
-
 CREATE OR REPLACE TABLE dev.adhoc.count_test (
     value int
 );
@@ -45,7 +44,7 @@ SELECT
         WHEN value = 0 THEN 'zero'
         WHEN value < 0 THEN 'negative'
         ELSE 'null'
-    END explanation
+    END sign
 FROM dev.adhoc.count_test;
 
 -- COUNT function
