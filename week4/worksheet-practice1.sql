@@ -30,7 +30,6 @@ DELETE FROM dev.adhoc.count_test WHERE value = 0;
 DROP TABLE dev.adhoc.count_test;
 SHOW TABLES IN SCHEMA dev.adhoc;
 
--- COUNT function
 CREATE OR REPLACE TABLE dev.adhoc.count_test (
     value int
 );
@@ -38,6 +37,18 @@ CREATE OR REPLACE TABLE dev.adhoc.count_test (
 INSERT INTO dev.adhoc.count_test VALUES 
 (NULL), (1), (1), (0), (0), (4), (3);
 
+-- CASE WHEN
+SELECT
+    value,
+    CASE 
+        WHEN value > 0 THEN 'positive'
+        WHEN value = 0 THEN 'zero'
+        WHEN value < 0 THEN 'negative'
+        ELSE 'null'
+    END explanation
+FROM dev.adhoc.count_test;
+
+-- COUNT function
 SELECT COUNT(1), COUNT(0), COUNT(NULL), COUNT(value), COUNT(DISTINCT value)
 FROM dev.adhoc.count_test;
 
