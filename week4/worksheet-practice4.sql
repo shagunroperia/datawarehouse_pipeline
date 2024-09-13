@@ -6,10 +6,21 @@ CREATE OR REPLACE TABLE dev.adhoc.count_test (
 INSERT INTO dev.adhoc.count_test VALUES 
 (NULL), (1), (1), (0), (0), (4), (3);
 
+SELECT 100/NULL;
+
+SELECT value, 100/value
+FROM dev.adhoc.count_test;
+
+SELECT value, 100/NULLIF(value, 0)
+FROM dev.adhoc.count_test;
+
 SELECT
      value,
      NULLIF (value, 0),
      COALESCE(value, 0)
+FROM dev.adhoc.count_test;
+
+SELECT value, COALESCE(value, 100)
 FROM dev.adhoc.count_test;
 
 -- UNION, UNION ALL, EXCEPT, INTERSECT
