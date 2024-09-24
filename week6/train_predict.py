@@ -73,7 +73,7 @@ def predict(cur, forecast_function_name, train_input_table, forecast_table, fina
         LET x := SQLID;
         CREATE OR REPLACE TABLE {forecast_table} AS SELECT * FROM TABLE(RESULT_SCAN(:x));
     END;"""
-    create_finale_table_sql = f"""CREATE TABLE {final_table} AS
+    create_final_table_sql = f"""CREATE OR REPLACE TABLE {final_table} AS
         SELECT SYMBOL, DATE, CLOSE AS actual, NULL AS forecast, NULL AS lower_bound, NULL AS upper_bound
         FROM {train_input_table}
         UNION ALL
@@ -82,7 +82,7 @@ def predict(cur, forecast_function_name, train_input_table, forecast_table, fina
 
     try:
         cur.execute(make_prediction_sql)
-        cur.execute(create_finale_table_sql)
+        cur.execute(create_final_table_sql)
     except Exception as e:
         print(e)
         raise
