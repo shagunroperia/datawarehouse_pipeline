@@ -1,3 +1,5 @@
+How to Run Airflow via Docker Compose
+
 1. Clone the repo to your computer
 ```
 git clone https://github.com/keeyong/sjsu-data226.git
