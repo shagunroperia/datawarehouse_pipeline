@@ -40,6 +40,6 @@ docker exec -it a9fc54d4b0b3 sh
 8. Let's run a few Airflow commands
 ```
 (airflow)airflow dags list
-(airflow)airflow tasks list YfinanceToSnowflake
-(airflow)airflow dags test YfinanceToSnowflake 2024-10-10
+(airflow)airflow tasks list HelloWorld
+(airflow)airflow dags test HelloWorld 2024-10-10
 ```
