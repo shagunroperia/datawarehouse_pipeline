@@ -1,4 +1,4 @@
-## How to Run Airflow via Docker Compose
+## How to Run Airflow via Docker Compose With Celery Executor
 
 1. Clone the repo to your computer
 ```
