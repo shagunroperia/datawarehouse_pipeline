@@ -65,7 +65,7 @@ with DAG(
     schedule = '45 2 * * *'
 ) as dag:
 
-    table = "dev.analytics.session"
+    table = "dev.analytics.session_summary"
     select_sql = """SELECT u.*, s.ts
     FROM dev.raw_data.user_session_channel u
     JOIN dev.raw_data.session_timestamp s ON u.sessionId=s.sessionId
