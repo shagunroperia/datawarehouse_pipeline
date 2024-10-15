@@ -13,20 +13,20 @@ If you don't have git, you can just download it at https://github.com/keeyong/sj
 cd sjsu-data226/week9
 ```
 
-3. First initialize Airflow environments
+3. Run Superset
+```
+docker compose up
+```
+
+4. Next initialize Superset environments
 ```
 docker exec -it superset superset db upgrade
 docker exec -it superset superset init
 ```
 
-4. Create an admin account for log-in. You can set any ID or Password you want (But remember them for the Web UI login). For the rest, you can just enter to take the default values.
+5. Create an admin account for log-in. You can set any ID or Password you want (But remember them for the Web UI login). For the rest, you can just enter to take the default values.
 ```
 docker exec -it superset superset fab create-admin
-```
-
-5. Next run the Superset service
-```
-docker compose up
 ```
 
 6. Wait some time, then visit http://localhost:8080 and log in (Use ID:PW you set up previously). Now you can set up database connection first, then add a dataset and create any charts you want
