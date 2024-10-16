@@ -61,7 +61,7 @@ def run_ctas(table, select_sql, primary_key=None):
 
 
 with DAG(
-    dag_id = 'BuildSummary',
+    dag_id = 'BuildELT_CTAS',
     start_date = datetime(2024,10,2),
     catchup=False,
     tags=['ELT'],
