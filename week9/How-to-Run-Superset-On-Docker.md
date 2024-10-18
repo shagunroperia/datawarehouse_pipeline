@@ -24,9 +24,18 @@ docker exec -it superset superset db upgrade
 docker exec -it superset superset init
 ```
 
-5. Create an admin account for log-in. You can set any ID or Password you want (But remember them for the Web UI login). For the rest, you can just enter to take the default values.
+5. Create an admin account for log-in. It will prompt you to enter userid, first name, last name, email, and password . You can set any ID or Password you want (But remember them for the Web UI login). For the rest, you can just enter to take the default values.
 ```
 docker exec -it superset superset fab create-admin
+```
+Here are examples of the prompts from the above command
+```
+Username [admin]: 
+User first name [admin]: 
+User last name [user]: 
+Email [admin@fab.org]: 
+Password: 
+Repeat for confirmation:
 ```
 
 6. Wait some time, then visit http://localhost:8080 and log in (Use ID:PW you set up previously). Now you can set up database connection first, then add a dataset and create any charts you want
