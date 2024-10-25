@@ -10,6 +10,6 @@
   )
 }}
 
-SELECT * FROM {{ source('analytics', 'session_summary') }}
+SELECT * FROM {{ ref('session_summary') }}
 
 {% endsnapshot %}
