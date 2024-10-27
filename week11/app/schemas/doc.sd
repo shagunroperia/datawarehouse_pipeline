@@ -23,7 +23,7 @@ schema doc {
     }
     
     field embedding type tensor<bfloat16>(v[384]) {
-        indexing: input title." ".input text | embed | attribute
+        indexing: input title." ".input text | embed | attribute | summary
         attribute {
             distance-metric: angular
         }
@@ -38,6 +38,15 @@ schema doc {
     rank-profile semantic {
         inputs {
             query(e) tensor<bfloat16>(v[384])
+        }
+        first-phase {
+            expression: closeness(field, embedding)
+        }
+    }
+
+    rank-profile recommendation inherits default {
+        inputs {
+            query(user_embedding) tensor<bfloat16>(v[384]) # Declare user_embedding as a tensor input
         }
         first-phase {
             expression: closeness(field, embedding)
