@@ -64,13 +64,14 @@ def query_movies_by_embedding(embedding_vector):
 app = Vespa(url="http://localhost", port=8080)
 
 query = "Harry Potter and the Half-Blood Prince"
+
 df = keyword_search(app, query)
 print(df.head())
+
 df = semantic_search(app, query)
 print(df.head())
 
-emb = get_embedding("1995")
-print(emb)
+emb = get_embedding("767")
 results = query_movies_by_embedding(emb["fields"]["embedding"])
 df = display_hits_as_df(results, ["doc_id", "title", "text"])
 print(df.head())
