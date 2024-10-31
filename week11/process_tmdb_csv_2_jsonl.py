@@ -72,4 +72,4 @@ def process_tmdb_csv(input_file, output_file):
   df_result.to_json(output_file, orient='records', lines=True)
 
 
-process_tmdb_csv("tmdb.csv", "clean_tmdb.jsonl")
+process_tmdb_csv("tmdb_5000_movies.csv", "clean_tmdb.jsonl")
