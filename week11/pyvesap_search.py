@@ -2,6 +2,8 @@
 # https://github.com/vespa-engine/sample-apps/blob/master/news/src/python/user_search.py
 # https://docs.vespa.ai/en/tutorials/news-5-recommendation.html
 #
+
+# pip install pyvespa
 import pandas as pd
 from vespa.application import Vespa
 from vespa.io import VespaResponse, VespaQueryResponse
