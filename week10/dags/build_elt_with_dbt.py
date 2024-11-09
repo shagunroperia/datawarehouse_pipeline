@@ -7,10 +7,13 @@ from pendulum import datetime
 
 from airflow import DAG
 from airflow.operators.bash import BashOperator
+from airflow.hooks.base import BaseHook
+
 
 DBT_PROJECT_DIR = "/opt/airflow/dbt"
 
 
+conn = BaseHook.get_connection('snowflake_conn')
 with DAG(
     "BuildELT_dbt",
     start_date=datetime(2024, 10, 14),
@@ -19,13 +22,13 @@ with DAG(
     catchup=False,
     default_args={
         "env": {
-            "DBT_USER": "{{ conn.snowflake_conn.login }}",
-            "DBT_PASSWORD": "{{ conn.snowflake_conn.password }}",
-            "DBT_ACCOUNT": "{{ conn.snowflake_conn.extra_dejson.account }}",
-            "DBT_SCHEMA": "{{ conn.snowflake_conn.schema }}",
-            "DBT_DATABASE": "{{ conn.snowflake_conn.extra_dejson.database }}",
-            "DBT_ROLE": "{{ conn.snowflake_conn.extra_dejson.role }}",
-            "DBT_WAREHOUSE": "{{ conn.snowflake_conn.extra_dejson.warehouse }}",
+            "DBT_USER": conn.login,
+            "DBT_PASSWORD": conn.password,
+            "DBT_ACCOUNT": conn.extra_dejson.get("account"),
+            "DBT_SCHEMA": conn.schema,
+            "DBT_DATABASE": conn.extra_dejson.get("database"),
+            "DBT_ROLE": conn.extra_dejson.get("role"),
+            "DBT_WAREHOUSE": conn.extra_dejson.get("warehouse"),
             "DBT_TYPE": "snowflake"
         }
     },
